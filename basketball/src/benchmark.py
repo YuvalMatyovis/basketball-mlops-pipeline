@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 ROOT = Path(__file__).resolve().parent.parent
 VIDEO_PATH = ROOT / "data" / "sample.mp4"
-MODELS_DIR = ROOT / "models"
+MODELS_DIR = ROOT.parent / "models"
 
 PERSON, BALL = 0, 32
 WARMUP_FRAMES = 5
