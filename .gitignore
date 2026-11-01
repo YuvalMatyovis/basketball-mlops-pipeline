@@ -3,3 +3,5 @@
 *.pt
 outputs/
 __pycache__/
+footvolley/data/
+*.ndjson
