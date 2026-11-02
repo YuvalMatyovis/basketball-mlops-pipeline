@@ -9,3 +9,12 @@
   domain differs from our clip (broadcast beach volleyball vs phone footvolley).
 - NOT yet evaluated on foochi_test (the real test; never used for training).
 - Weights: models/ball_v1.pt (not in git). Training notebook: run in Colab with args.yaml settings.
+
+## Evaluation on our clip (foochi_test) - FAILED
+Visual check: at conf 0.15 the model flagged something in every frame (178/178), always >1 object,
+none of them the ball. At imgsz 640/960, conf 0.4: 1.20 / 0.71 detections per frame, still wrong.
+Example: ball clearly visible against the sky was missed, a player's foot was boxed instead.
+Likely cause (hypothesis): domain mismatch - training data is broadcast footage from a high angle
+with sand backgrounds, so sky backgrounds and larger balls were never seen; only 298 training images.
+Lesson: compare a few dataset images with our own frames BEFORE training; a detection rate without
+precision is meaningless.
