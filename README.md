@@ -1,26 +1,21 @@
-# Footvolley Analytics Pipeline ⚽🔥
+# Footvolley Analytics Pipeline
 
-מערכת ראייה ממוחשבת וניתוח נתונים אוטומטי למשחקי ומעגלי פוצ'יוולי, המבוססת על מודלי YOLOv8/YOLO11 ו-ByteTrack.
+A computer vision and data analytics pipeline for footvolley games and ball-keeping circles, built on YOLOv8/YOLO11 detection models and ByteTrack tracking.
 
-## 📌 סטטוס פרויקט (סיכום יום)
-- **Perception Pipeline:** זיהוי שחקנים וכדור עובד ברמת דיוק של 80-90% על סרטוני ניסיון, תוך חילוץ נתונים מובנים ל-`tracking_data.json`.
-- **ארגון הריפו:** ניקוי מלא של קבצי כדורסל ישנים וסידור תיקיית המודלים (`footvolley/models`).
-- **אימות ויזואלי:** הוספת מנגנון המרה ל-`footvolley_preview.mp4` לצפייה ישירה ב-Codespaces.
+## Project Status (Proof of Concept)
 
-## 🎯 יעדים קרובים (Post-Processing & Analytics)
-1. **השלמת פערים (Linear Interpolation):** אלגוריתם להשלמת מיקומי כדור בפריימים שבהם הכדור נעלם לגובה/טשטוש.
-2. **חלוקה לאזורים (Zonal Mapping):** שיוך דינמי של שחקנים לפי 4 אזורי מגרש (`Top`, `Bottom`, `Left`, `Right`).
-3. **זיהוי נגיעות (Touch Detection):** שילוב קרבה מרחבית עם שינוי חד בווקטור המהירות של הכדור.
+- **Perception pipeline:** Player and ball detection and tracking run end to end, extracting structured per-frame positions to `tracking_data.json`. Players are detected and tracked reliably in test clips (roughly 90% by visual check); ball detection remains the main bottleneck and is being actively improved with a custom-trained model (`ball_v2`).
+- **Repository organization:** Legacy basketball files removed and the models directory consolidated (`footvolley/models`).
+- **Visual verification:** Conversion pipeline to `footvolley_preview.mp4` for direct preview in Codespaces.
+
+## Near-Term Goals (Post-Processing & Analytics)
+
+1. **Gap filling (linear interpolation):** Estimate ball positions in frames where the ball is lost to height or motion blur.
+2. **Zonal mapping:** Dynamically assign players to the four court zones (`Top`, `Bottom`, `Left`, `Right`).
+3. **Touch detection:** Combine spatial proximity with sharp changes in the ball's velocity vector.
 
 ---
-> **הערה למדדי הבנצ'מרק (`ball_v2`):**
-> - סט הבדיקה הקיים כולל 40 פריימים מקליפ יחיד.
-> - התוצאות מהוות ראיה כיוונית ראשונית בלבד.
 
-## 👤 Credits & Contributions
-
-**Original concept:** Ido - the project idea and vision.
-
-**Technical foundation (as of November 3, 2026):** Built by Yuval Matyovis, including the player and ball detection and tracking pipeline, data preparation and training of the ball_v2 model, extraction of per-frame positions to tracking_data.json, and repository organization and documentation.
-
-**Future contributions:** Each new contribution will be documented with the contributor's name, area of work, and a short description of the change, distinguishing the initial technical foundation from subsequent team contributions.
+> **Note on `ball_v2` benchmark metrics:**
+> - The current test set contains 40 frames from a single clip.
+> - Results are preliminary, directional evidence only.
