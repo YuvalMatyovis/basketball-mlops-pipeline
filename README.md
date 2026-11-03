@@ -16,3 +16,11 @@
 > **הערה למדדי הבנצ'מרק (`ball_v2`):**
 > - סט הבדיקה הקיים כולל 40 פריימים מקליפ יחיד.
 > - התוצאות מהוות ראיה כיוונית ראשונית בלבד.
+
+## 👤 Credits & Contributions
+
+**Original concept:** Ido - the project idea and vision.
+
+**Technical foundation (as of November 3, 2026):** Built by Yuval Matyovis, including the player and ball detection and tracking pipeline, data preparation and training of the ball_v2 model, extraction of per-frame positions to tracking_data.json, and repository organization and documentation.
+
+**Future contributions:** Each new contribution will be documented with the contributor's name, area of work, and a short description of the change, distinguishing the initial technical foundation from subsequent team contributions.
