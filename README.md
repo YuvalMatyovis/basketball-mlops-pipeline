@@ -1,27 +1,18 @@
-# Ball Sports Video Analytics (MLOps learning project)
+# Footvolley Analytics Pipeline ⚽🔥
 
-Detecting players and a ball in sports clips with YOLO, with reproducible
-experiments to compare models and settings.
+מערכת ראייה ממוחשבת וניתוח נתונים אוטומטי למשחקי ומעגלי פוצ'יוולי, המבוססת על מודלי YOLOv8/YOLO11 ו-ByteTrack.
 
-| Project | What | Status |
-|---|---|---|
-| [`footvolley/`](footvolley/) | Ball-keeping circles (4 players): tracking, touches, passes, chains | active |
-| [`basketball/`](basketball/) | Initial YOLO benchmark on a basketball clip | PoC done |
+## 📌 סטטוס פרויקט (סיכום יום)
+- **Perception Pipeline:** זיהוי שחקנים וכדור עובד ברמת דיוק של 80-90% על סרטוני ניסיון, תוך חילוץ נתונים מובנים ל-`tracking_data.json`.
+- **ארגון הריפו:** ניקוי מלא של קבצי כדורסל ישנים וסידור תיקיית המודלים (`footvolley/models`).
+- **אימות ויזואלי:** הוספת מנגנון המרה ל-`footvolley_preview.mp4` לצפייה ישירה ב-Codespaces.
 
-## Setup
-```bash
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-```
-Videos (`*/data/*.mp4`) and weights (`models/*.pt`) are not in git.
-Each project has its own README with run commands and results.
+## 🎯 יעדים קרובים (Post-Processing & Analytics)
+1. **השלמת פערים (Linear Interpolation):** אלגוריתם להשלמת מיקומי כדור בפריימים שבהם הכדור נעלם לגובה/טשטוש.
+2. **חלוקה לאזורים (Zonal Mapping):** שיוך דינמי של שחקנים לפי 4 אזורי מגרש (`Top`, `Bottom`, `Left`, `Right`).
+3. **זיהוי נגיעות (Touch Detection):** שילוב קרבה מרחבית עם שינוי חד בווקטור המהירות של הכדור.
 
-## 📊 Final Detector Benchmarks (Test Set: 40 frames)
-
-| Model | Precision | Recall | F1-Score | Status / Insight |
-| :--- | :--- | :--- | :--- | :--- |
-| **YOLO11n (COCO)** | 1.00 | 0.09 | 0.17 | Too rigid; misses 91% of fast-moving sports balls. |
-| **HSV Color (Classical CV)** | 0.00 | 0.00 | 0.00 | Failed due to rigid color thresholding vs real-world lighting. |
-| **ball_v1 (External Data)** | 0.00 | 0.00 | 0.00 | Domain shift failure (trained on external public dataset). |
-| **ball_v2 (Custom Fine-Tuned)** | **0.89** | **0.73** | **0.80** | **Winner:** Fine-tuned on custom annotated frames via Colab T4 GPU. |
-
+---
+> **הערה למדדי הבנצ'מרק (`ball_v2`):**
+> - סט הבדיקה הקיים כולל 40 פריימים מקליפ יחיד.
+> - התוצאות מהוות ראיה כיוונית ראשונית בלבד.
