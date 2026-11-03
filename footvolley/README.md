@@ -38,3 +38,5 @@ one clip do not generalize (in basketball a bigger model/resolution helped).
 - [ ] More clips; touch via velocity change; drop detection; progress printing
 - [ ] Slim requirements.txt (direct deps, CPU torch)
 - [ ] MLflow, DVC, GitHub Actions, Docker
+
+> **Reading this table:** 40 hand-labeled frames from ONE clip (33 contain the ball). One frame is ~3 points and the 95% interval for ball_v2 recall is roughly 56-85%, so this is directional evidence only. conf=0.25 was fixed, not tuned on test. The "insight" column holds hypotheses, not verified causes.
