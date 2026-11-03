@@ -90,7 +90,7 @@ def evaluate():
         print(f"{name:<15} | {precision:.2f}      | {recall:.2f}      | {f1:.2f}")
 
 def _update_metrics(metrics, gt_box, pred_box, w, h, iou_thresh=0.3):
-    # התיקון: בדיקה מפורשת ל-None כדי שמערכי NumPy לא יקריסו את הלוגיקה
+    # Fix: explicit None check so NumPy arrays don't crash the logic
     if gt_box is not None and pred_box is not None:
         if iou(gt_box, pred_box) >= iou_thresh:
             metrics["TP"] += 1
